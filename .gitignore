@@ -1,0 +1,25 @@
+# Ignore build output folders
+/build/
+/dist/
+
+# Ignore NetBeans project-specific files that are system-dependent
+/nbproject/private/
+/nbproject/Makefile
+/nbproject/*.user
+
+# Ignore compiled .class files
+*.class
+
+# Ignore IDE-specific files
+.idea/
+/.vscode/
+
+# Ignore log and temp files
+*.log
+*.bak
+*.tmp
+*.swp
+
+# Ignore OS-specific files
+.DS_Store        # macOS
+Thumbs.db        # Windows

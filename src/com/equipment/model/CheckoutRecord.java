@@ -21,7 +21,7 @@ public class CheckoutRecord
     private LocalDate returnDate;
     
     //constructors
-    public CheckoutRecord(int id, int employeeID, int equipmentID, LocalDate checkoutDate, LocalDate returnDate); 
+    public CheckoutRecord(int id, int employeeID, int equipmentID, LocalDate checkoutDate, LocalDate returnDate)
     {
         this.id = id;
         this.employeeID = employeeID;
