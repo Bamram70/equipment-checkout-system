@@ -17,3 +17,4 @@ public class startPage {
     }
     
 }
+// use this as the first main function- run this first to run the rest of the code
