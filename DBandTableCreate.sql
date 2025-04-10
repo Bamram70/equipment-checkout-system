@@ -22,24 +22,46 @@ CREATE TABLE Administrator (
 CREATE TABLE Equipment (
     equip_ID INT AUTO_INCREMENT PRIMARY KEY,
     equip_name VARCHAR(45) NOT NULL,
-    type VARCHAR(45) NOT NULL,
-    quantity INT NOT NULL
+    equip_type VARCHAR(45) NOT NULL,
+    quantity INT NOT NULL,
+    warehouse_ID INT, 
+    FOREIGN KEY (warehouse_ID) REFERENCES Warehouse(warehouse_ID)
+);
+CREATE TABLE Materials (
+    mate_ID INT AUTO_INCREMENT PRIMARY KEY, 
+    mate_name VARCHAR(45) NOT NULL,
+    mate_type VARCHAR(45) NOT NULL,
+    quantity INT NOT NULL,
+    equip_ID INT,
+    FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID)
+);
+
+CREATE TABLE Tools (
+    tool_ID INT AUTO_INCREMENT PRIMARY KEY,
+    tool_name VARCHAR(45) NOT NULL,
+    tool_type VARCHAR(45) NOT NULL,
+    quantity INT NOT NULL,
+    equip_ID INT,
+    FOREIGN KEY (equip_ID) REFERENCES Equipment(Equip_ID)
 );
 
 CREATE TABLE ToolConditionReport (
     report_ID INT AUTO_INCREMENT PRIMARY KEY,
     equip_ID INT NOT NULL,
-    equip_cond VARCHAR(255),
-    is_repair BOOLEAN NOT NULL,
-    FOREIGN KEY (equipadministrator_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE
+    equip_cond ENUM('New', 'Normal Wear', 'Needs Repair') NOT NULL DEFAULT 'New',
+    FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE InventoryDatabase (
     inven_ID INT AUTO_INCREMENT PRIMARY KEY,
     equip_ID INT NOT NULL,
+    mate_ID INT NOT NULL,
+    tool_ID INT NOT NULL,
     stock_thresh INT NOT NULL,
     low_stock_alert BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE
+    FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE,
+    FOREIGN KEY (mate_ID) REFERENCES Materials(mate_ID) ON DELETE CASCADE,
+    FOREIGN KEY (tool_ID) REFERENCES Tools(tool_ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Notifications (
@@ -49,8 +71,6 @@ CREATE TABLE Notifications (
     status ENUM('Pending', 'Sent', 'Acknowledged') NOT NULL DEFAULT 'Pending',
     FOREIGN KEY (recip_ID) REFERENCES SystemUser(user_ID) ON DELETE CASCADE
 );
-
-
 
 CREATE TABLE Reports (
     report_ID INT AUTO_INCREMENT PRIMARY KEY,
