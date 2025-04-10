@@ -15,9 +15,25 @@ import java.util.List;
  */
 public class EmployeeController
 {
-    private EmployeeDAO employeeDAO = new EmployeeDAO();
+
+    private EmployeeDAO employeeDAO;
     
-    public boolean isAdmin(int employeeID)
+    public EmployeeController()
+    {
+        employeeDAO = new EmployeeDAO();
+    }
+    
+    public boolean createUser(String username, String password, String role)
+    {
+        return employeeDAO.createUser(username, password, role);
+    }
+    
+    public boolean login(String username, String password)
+    {
+        return employeeDAO.login(username, password);
+    }
+    
+    /*public boolean isAdmin(int employeeID)
     {
         Employee employee = employeeDAO.getEmployeeByID(employeeID);
         return employee != null && employee.isAdmin();
@@ -34,4 +50,5 @@ public class EmployeeController
         if (!currentUser.isAdmin()) return false;
         return employeeDAO.removeEmployee(employeeID);
     }
+    */
 }

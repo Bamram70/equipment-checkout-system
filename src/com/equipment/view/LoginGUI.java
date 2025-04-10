@@ -2,6 +2,7 @@ package com.equipment.view;
 
 
 import javax.swing.JOptionPane;
+import com.equipment.dao.EmployeeDAO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,7 +20,8 @@ public class LoginGUI extends javax.swing.JFrame {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jLabel1 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
@@ -37,16 +39,20 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         txtPassword.setNextFocusableComponent(btnLogin);
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtPassword.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txtPasswordActionPerformed(evt);
             }
         });
 
         btnLogin.setText("Login");
         btnLogin.setNextFocusableComponent(txtUsername);
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLoginActionPerformed(evt);
             }
         });
@@ -101,15 +107,26 @@ public class LoginGUI extends javax.swing.JFrame {
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
 
-    if (username.equals("admin") && password.equals("admin")) {
-        new AdminGUI().setVisible(true);
-        this.dispose(); // Close login screen
-    } else if (username.equals("employee") && password.equals("employee")) {
-        new MainGUI().setVisible(true);
-        this.dispose(); // Close login screen
-    } else {
-        JOptionPane.showMessageDialog(this, "Invalid login credentials!", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+        //Use the EmployeeDAO to verify the login credentials
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        boolean isValidLogin = employeeDAO.login(username, password);
+        
+        if (isValidLogin)
+        {
+            //if valid login, determine role and navigate to proper UI
+            String userRole = employeeDAO.getUserRole(username);
+            if("Administrator".equals(userRole)){
+                new AdminGUI().setVisible(true);//open Admin UI
+            }
+            else if("Employee".equals(userRole)){
+                new MainGUI().setVisible(true);//open employee UI
+            }
+            this.dispose();
+        }
+        else{ //show error if login does not validate
+            JOptionPane.showMessageDialog(this, "Invalid login credentials", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
