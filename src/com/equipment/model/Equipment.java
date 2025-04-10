@@ -15,6 +15,19 @@ public class Equipment
     protected int id;
     protected String name;
     protected String type; //tool or material
+
+    public int getID()
+    {
+        return id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public String type()
+    {
+        return type;
+    }
     
     public Equipment(int id, String name, String type) {
         this.id = id;
