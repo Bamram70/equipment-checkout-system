@@ -13,6 +13,11 @@ package com.equipment.model;
 public class Material extends Equipment
 {
     private int quantity;
+
+    public int getQuantity()
+    {
+        return quantity;
+    }
     
     public Material(int id, String name, int quantity){
         super(id, name, "Material");
