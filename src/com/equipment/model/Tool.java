@@ -13,6 +13,11 @@ package com.equipment.model;
 public class Tool extends Equipment
 {
     private String condition;
+
+    public String getCondition()
+    {
+         return condition;
+    }
     
     public Tool(int id, String name, String condition){
         super(id, name, "Tool");
