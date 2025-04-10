@@ -15,7 +15,20 @@ public class Employee
     private int id;
     private String name;
     private String role; //"admin" or "employee"
-    
+
+    public int getID()
+    {
+         return id;
+    }
+    public String getName()
+    {
+         return name;
+    }
+    public int getRole()
+    {
+         return role;
+    }
+ 
     public Employee(int id, String name, String role)
     {
         this.id = id;
