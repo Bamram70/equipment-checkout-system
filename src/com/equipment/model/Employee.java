@@ -24,7 +24,7 @@ public class Employee
     {
          return name;
     }
-    public int getRole()
+    public String getRole()
     {
          return role;
     }
