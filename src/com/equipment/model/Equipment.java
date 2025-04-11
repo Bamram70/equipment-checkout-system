@@ -15,6 +15,7 @@ public class Equipment
     protected int id;
     protected String name;
     protected String type; //tool or material
+    private List<String> equipment;
 
     public int getID()
     {
@@ -28,11 +29,16 @@ public class Equipment
     {
         return type;
     }
+    public String equipment()
+    {
+        return this.employee;
+    }
     
-    public Equipment(int id, String name, String type) {
+    public Equipment(int id, String name, String type, List<String> equipment) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.equipment = equipment;
     }
     
     //Getters and Setters
