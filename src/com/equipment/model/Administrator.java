@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.util.ArrayList;
+import java.util.List;
+
+
 package com.mycompany.classes_getters_and_setters;
 
 /**
@@ -10,12 +14,12 @@ package com.mycompany.classes_getters_and_setters;
  */
 public class Administrator {
     
-    private String employeeList;
+    private List<String> employeeList;
     private String equipmentReport;
     
-    public String getEmployeeList()
+    public String editEmployees()
     {
-        return employeeList;
+        return this.employeeList;
     }
     public String getEquipmentReport()
     {
@@ -27,4 +31,5 @@ public class Administrator {
         this.equipmentReport = equipmentReport;
         //void setEmployeeStats
     }
+    public 
 }
