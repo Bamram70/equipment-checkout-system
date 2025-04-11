@@ -14,7 +14,7 @@ public class Alerts {
     private String alertType;
     private String dateGenerated;
     
-    public int getAlertID()
+    public int generatePopup()
     {
         return alertID;
     }
