@@ -1,5 +1,8 @@
 package com.equipment.view;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,10 +12,19 @@ package com.equipment.view;
  * jlyons30@my.devry.edu*/
 
 public class MainGUI extends javax.swing.JFrame {
+    
+    private String username;
+    private DefaultListModel<String> rentedModel = new DefaultListModel<>();
+    
      /*Creates new form MainGUI*/
-    public MainGUI() {
+    public MainGUI(String username) {
+        this.username = username;
         initComponents();
+        btnRequest.addActionListener(e -> requestTool());
+        btnRequestMat.addActionListener(e -> requestMaterial());
+        lstRented.setModel(rentedModel);
         setLocationRelativeTo(null);
+        lblWelcome.setText("Welcome " + username);
 
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -24,8 +36,11 @@ public class MainGUI extends javax.swing.JFrame {
         btnReturn = new javax.swing.JButton();
         jpn_rentedtools = new javax.swing.JScrollPane();
         listRentedtools = new javax.swing.JList<>();
-        lblOverdue = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
+        lblWelcome = new javax.swing.JLabel();
+        btnRequestMat = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstRented = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,14 +59,16 @@ public class MainGUI extends javax.swing.JFrame {
         });
         jpn_rentedtools.setViewportView(listRentedtools);
 
-        lblOverdue.setText("Overdue Alert!");
-
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
+
+        btnRequestMat.setText("Request Material");
+
+        jScrollPane1.setViewportView(lstRented);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,37 +80,57 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jpn_rentedtools)
                     .addComponent(jcbTools, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jcbMaterials, 0, 98, Short.MAX_VALUE))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLogout)
+                        .addGap(56, 56, 56))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(82, 82, 82)
-                        .addComponent(lblOverdue))
-                    .addComponent(btnLogout))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(54, 54, 54)
+                                    .addComponent(btnRequest))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(11, 11, 11)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(btnRequestMat)))
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(lblWelcome)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addComponent(lblWelcome)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbTools, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOverdue))
+                    .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jcbMaterials, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLogout)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jcbMaterials, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(btnRequestMat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -115,15 +152,43 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+// logic to request tools
+private void requestTool() {
+    String selectedTool = (String) jcbTools.getSelectedItem();
+    if (selectedTool == null || selectedTool.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please select a tool to request.");
+        return;
+    }
+
+    rentedModel.addElement("Tool - " + selectedTool);
+    JOptionPane.showMessageDialog(this, "Tool '" + selectedTool + "' has been requested.");
+}
+// logic to request materials
+private void requestMaterial() {
+    String selectedMaterial = (String) jcbMaterials.getSelectedItem();
+    if (selectedMaterial == null || selectedMaterial.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please select a material to request.");
+        return;
+    }
+
+    rentedModel.addElement("Material - " + selectedMaterial);
+    JOptionPane.showMessageDialog(this, "Material '" + selectedMaterial + "' has been requested.");
+}
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRequest;
+    private javax.swing.JButton btnRequestMat;
     private javax.swing.JButton btnReturn;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcbMaterials;
     private javax.swing.JComboBox<String> jcbTools;
     private javax.swing.JScrollPane jpn_rentedtools;
-    private javax.swing.JLabel lblOverdue;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<String> listRentedtools;
+    private javax.swing.JList<String> lstRented;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,8 +20,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
@@ -39,20 +38,16 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel2.setText("Password");
 
         txtPassword.setNextFocusableComponent(btnLogin);
-        txtPassword.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
 
         btnLogin.setText("Login");
         btnLogin.setNextFocusableComponent(txtUsername);
-        btnLogin.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
@@ -115,11 +110,11 @@ public class LoginGUI extends javax.swing.JFrame {
         {
             //if valid login, determine role and navigate to proper UI
             String userRole = employeeDAO.getUserRole(username);
-            if("Administrator".equals(userRole)){
-                new AdminGUI().setVisible(true);//open Admin UI
+            if("admin".equals(userRole)){
+                new AdminGUI(username).setVisible(true);//open Admin UI
             }
-            else if("Employee".equals(userRole)){
-                new MainGUI().setVisible(true);//open employee UI
+            else if("employee".equals(userRole)){
+                new MainGUI(username).setVisible(true);//open employee UI
             }
             this.dispose();
         }
@@ -127,6 +122,7 @@ public class LoginGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Invalid login credentials", 
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed

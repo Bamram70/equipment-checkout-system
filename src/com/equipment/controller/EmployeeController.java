@@ -23,14 +23,24 @@ public class EmployeeController
         employeeDAO = new EmployeeDAO();
     }
     
-    public boolean createUser(String username, String password, String role)
+    public boolean addEmployee(Employee employee) 
     {
-        return employeeDAO.createUser(username, password, role);
+        return employeeDAO.addEmployee(employee);
     }
     
     public boolean login(String username, String password)
     {
         return employeeDAO.login(username, password);
+    }
+    
+    public List<Employee> listAllEmployees()
+    {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        return employeeDAO.getAllEmployees();
+    }
+    public boolean removeEmployee(String empUsername)
+    {
+        return employeeDAO.removeEmployee(empUsername);
     }
     
     /*public boolean isAdmin(int employeeID)
