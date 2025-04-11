@@ -14,7 +14,7 @@ public class Material extends Equipment
 {
     private int quantity;
 
-    public int getQuantity()
+    public int updateQuantity()
     {
         return quantity;
     }
