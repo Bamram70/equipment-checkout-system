@@ -36,14 +36,16 @@ public class Employee
         this.role = role;
     }
 
-    public void login()
+    public boolean login()
     {
+         return "employee".equalsIgnoreCase(role);          
         //if credentials are valid, move on to next GUI
     }
     public void logout()
     {
-        //user selects the log out button/ is allowed 3 attempts; if credentials are invalid, GUI system closes
-        System.exit(0);
+         System.exit(0);
+         //user selects the log out button
+         //is allowed 3 attempts; if credentials are invalid, GUI system closes   
     }
     public boolean isAdmin() 
     {
@@ -52,9 +54,10 @@ public class Employee
     public void approveRequest()
     {
         if (equipment.contains(id)){
-         System.out.println("Tool successfully ordered.")}
+          System.out.println("Tool successfully ordered.");
+        }
         else{
-           System.out.println("Tool not available.")
+           System.out.println("Tool not available.");
         }
     }
     //Getters and Setters
