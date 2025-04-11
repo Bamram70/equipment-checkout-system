@@ -12,31 +12,33 @@ import java.time.LocalDate;
  *         b.mcgalliard.dev@outlook.com
  *         +1(517)575-5880
  */
-public class CheckoutRecord {
-    // fields
+public class CheckoutRecord
+{
     private int id;
     private int employeeID;
     private int equipmentID;
     private LocalDate checkoutDate;
     private LocalDate returnDate;
-
-    // constructors
-    public CheckoutRecord(int id, int employeeID, int equipmentID, LocalDate checkoutDate, LocalDate returnDate) {
+    
+    //constructors
+    public CheckoutRecord(int id, int employeeID, int equipmentID, LocalDate checkoutDate, LocalDate returnDate)
+    {
         this.id = id;
         this.employeeID = employeeID;
         this.equipmentID = equipmentID;
         this.checkoutDate = checkoutDate;
         this.returnDate = returnDate;
     }
-
-    // Default constructor
-    public CheckoutRecord() {
+    
+    //Default constructor
+    public CheckoutRecord()
+    {
         this.id = 0;
         this.employeeID = 0;
         this.equipmentID = 0;
         this.checkoutDate = LocalDate.now();
         this.returnDate = null;
     }
-
-    // Getters and Setters
+    
+    //Getters and Setters
 }

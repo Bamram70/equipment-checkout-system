@@ -2,6 +2,7 @@ package com.equipment.view;
 
 
 import javax.swing.JOptionPane;
+import com.equipment.dao.EmployeeDAO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -100,40 +101,41 @@ public class LoginGUI extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
+        
+        // === DEV OVERRIDE ===
+        if (username.equals("testemp") && password.equals("test123")) {
+        new MainGUI("testemp").setVisible(true);
+        this.dispose();
+        return;
+    }
+        if (username.equals("testadmin") && password.equals("admin123")) {
+        new AdminGUI("testadmin").setVisible(true);
+        this.dispose();
+        return;
+}
+        // === END DEV OVERRIDE ===
 
-        // Test for multiple user logins to see who rents what. Will be replaced with database integration
-        String[][] adminUsers = {
-            {"admin1", "adminpass1"},
-            {"admin2", "adminpass2"},
-            {"admin3", "adminpass3"}
-        };
-
-        String[][] employeeUsers = {
-            {"emp1", "emppass1"},
-            {"emp2", "emppass2"},
-            {"emp3", "emppass3"}
-        };
-
-        // Check if user is an admin
-        for (String[] admin : adminUsers) {
-            if (admin[0].equals(username) && admin[1].equals(password)) {
-                new AdminGUI(username).setVisible(true);
-                this.dispose();
-                return;
+        //Use the EmployeeDAO to verify the login credentials
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        boolean isValidLogin = employeeDAO.login(username, password);
+        
+        if (isValidLogin)
+        {
+            //if valid login, determine role and navigate to proper UI
+            String userRole = employeeDAO.getUserRole(username);
+            if("admin".equals(userRole)){
+                new AdminGUI(username).setVisible(true);//open Admin UI
             }
+            else if("employee".equals(userRole)){
+                new MainGUI(username).setVisible(true);//open employee UI
+            }
+            this.dispose();
+        }
+        else{ //show error if login does not validate
+            JOptionPane.showMessageDialog(this, "Invalid login credentials", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        // Check if user is an employee
-        for (String[] employee : employeeUsers) {
-            if (employee[0].equals(username) && employee[1].equals(password)) {
-                new MainGUI(username).setVisible(true);
-                this.dispose();
-                return;
-            }
-        }
-
-        // If no match
-        JOptionPane.showMessageDialog(this, "Invalid login credentials!", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
