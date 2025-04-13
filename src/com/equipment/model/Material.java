@@ -6,19 +6,21 @@ package com.equipment.model;
 
 /**
  *
-  * @author Brendan McGalliard
+ * @author Brendan McGalliard
  *         b.mcgalliard.dev@outlook.com
  *         +1(517)575-5880
  */
 public class Material extends Equipment
 {
-    private int quantity;
-    
-    public Material(int id, String name, int quantity){
-        super(id, name, "Material");
-        this.quantity = quantity;
+    public Material(String equipName, int equipQuan, String equipCond)
+    {
+        super(equipName, Equipment.MATERIAL_TYPE, 
+                equipQuan, equipCond, false, 0); //Default checkout and warehouseID
     }
     
-    //Getters and Setters
+    @Override
+    public String toString()
+    {
+        return super.toString() + " | Consumable";
+    }
 }
-    

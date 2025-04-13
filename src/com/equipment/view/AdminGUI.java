@@ -287,26 +287,57 @@ private void openInventoryEditor() {
 
     javax.swing.JButton addBtn = new javax.swing.JButton("Add Item");
     javax.swing.JButton removeBtn = new javax.swing.JButton("Remove Selected");
+    javax.swing.JButton editBtn = new javax.swing.JButton("Edit Item");
 
     addBtn.addActionListener(e -> {
-        String itemName = JOptionPane.showInputDialog(this, "Enter item name:");
-        if (itemName == null || itemName.trim().isEmpty()) return;
+    String itemName = JOptionPane.showInputDialog(this, "Enter item name:");
+    if (itemName == null || itemName.trim().isEmpty()) return;
 
-        String type = JOptionPane.showInputDialog(this, "Enter type (Tool/Material):");
-        if (type == null || (!type.equalsIgnoreCase("tool") && !type.equalsIgnoreCase("material"))) {
-            JOptionPane.showMessageDialog(this, "Type must be 'Tool' or 'Material'.");
-            return;
+    String type = JOptionPane.showInputDialog(this, "Enter type (Tool/Material):");
+    if (type == null || (!type.equalsIgnoreCase("tool") && !type.equalsIgnoreCase("material"))) {
+        JOptionPane.showMessageDialog(this, "Type must be 'Tool' or 'Material'.");
+        return;
+    }
+
+    String quantityStr = JOptionPane.showInputDialog(this, "Enter quantity:");
+    if (quantityStr == null || !quantityStr.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Invalid quantity.");
+        return;
+    }
+
+    String condition = JOptionPane.showInputDialog(this, "Enter condition (New, Worn, Damaged, Broken):");
+    if (condition == null || condition.trim().isEmpty()) return;
+
+    String checkOutStr = JOptionPane.showInputDialog(this, "Is it checked out? (true/false):");
+    boolean isCheckedOut = Boolean.parseBoolean(checkOutStr); // Default false if invalid
+
+    String warehouseIDStr = JOptionPane.showInputDialog(this, "Enter warehouse ID (number):");
+    if (warehouseIDStr == null || !warehouseIDStr.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Invalid warehouse ID.");
+        return;
+    }
+
+    String returnDateStr = null;
+    if (type.equalsIgnoreCase("tool")) {
+        returnDateStr = JOptionPane.showInputDialog(this, "Enter return date (yyyy-MM-dd), or leave blank:");
+        if (returnDateStr != null && !returnDateStr.isEmpty()) {
+            try {
+                java.time.LocalDate.parse(returnDateStr); // Validates the date
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd.");
+                return;
+            }
         }
+    }
 
-        String quantityStr = JOptionPane.showInputDialog(this, "Enter quantity:");
-        if (quantityStr == null || !quantityStr.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "Invalid quantity.");
-            return;
-        }
+    String formatted = itemName + " (" + type.toUpperCase() + ") x" + quantityStr + 
+        " | Cond: " + condition + 
+        " | Checked Out: " + isCheckedOut +
+        " | WH ID: " + warehouseIDStr +
+        (returnDateStr != null && !returnDateStr.isEmpty() ? " | Return: " + returnDateStr : "");
 
-        String formatted = itemName + " (" + type.toUpperCase() + ") x" + quantityStr;
-        inventoryModel.addElement(formatted);
-    });
+    inventoryModel.addElement(formatted);
+});
 
     removeBtn.addActionListener(e -> {
         String selected = popupList.getSelectedValue();
@@ -317,13 +348,80 @@ private void openInventoryEditor() {
             JOptionPane.showMessageDialog(this, "Select an item to remove.");
         }
     });
+    
+    editBtn.addActionListener(e -> {
+    String selected = popupList.getSelectedValue();
+    if (selected == null) {
+        JOptionPane.showMessageDialog(this, "Select an item to edit.");
+        return;
+    }
 
+    // Attempt to split the data you added previously
+    String[] parts = selected.split(" \\(|\\) x| \\| Cond: | \\| Checked Out: | \\| WH ID: | \\| Return: ");
+    String oldName = parts[0];
+    String oldType = parts[1];
+    String oldQuan = parts[2];
+    String oldCond = parts[3];
+    String oldCheckedOut = parts[4];
+    String oldWarehouseID = parts[5];
+    String oldReturnDate = (parts.length >= 7) ? parts[6] : "";
+
+    String newName = JOptionPane.showInputDialog(this, "Edit item name:", oldName);
+    if (newName == null || newName.trim().isEmpty()) return;
+
+    String newType = JOptionPane.showInputDialog(this, "Edit type (Tool/Material):", oldType);
+    if (newType == null || (!newType.equalsIgnoreCase("Tool") && !newType.equalsIgnoreCase("Material"))) {
+        JOptionPane.showMessageDialog(this, "Type must be 'Tool' or 'Material'.");
+        return;
+    }
+
+    String newQuan = JOptionPane.showInputDialog(this, "Edit quantity:", oldQuan);
+    if (newQuan == null || !newQuan.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Invalid quantity.");
+        return;
+    }
+
+    String newCond = JOptionPane.showInputDialog(this, "Edit condition (New, Worn, Damaged, Broken):", oldCond);
+    if (newCond == null || newCond.trim().isEmpty()) return;
+
+    String newCheckedOut = JOptionPane.showInputDialog(this, "Is it checked out? (true/false):", oldCheckedOut);
+    boolean isCheckedOut = Boolean.parseBoolean(newCheckedOut);
+
+    String newWarehouseID = JOptionPane.showInputDialog(this, "Edit warehouse ID (number):", oldWarehouseID);
+    if (newWarehouseID == null || !newWarehouseID.matches("\\d+")) {
+        JOptionPane.showMessageDialog(this, "Invalid warehouse ID.");
+        return;
+    }
+
+    String newReturnDate = "";
+    if (newType.equalsIgnoreCase("Tool")) {
+        newReturnDate = JOptionPane.showInputDialog(this, "Edit return date (yyyy-MM-dd):", oldReturnDate);
+        if (newReturnDate != null && !newReturnDate.isEmpty()) {
+            try {
+                java.time.LocalDate.parse(newReturnDate); // Validates format
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd.");
+                return;
+            }
+        }
+    }
+
+    String updated = newName + " (" + newType.toUpperCase() + ") x" + newQuan +
+        " | Cond: " + newCond +
+        " | Checked Out: " + isCheckedOut +
+        " | WH ID: " + newWarehouseID +
+        (newReturnDate != null && !newReturnDate.isEmpty() ? " | Return: " + newReturnDate : "");
+
+    inventoryModel.setElementAt(updated, popupList.getSelectedIndex());
+});
+    
     panel.setLayout(new java.awt.BorderLayout());
     panel.add(scroll, java.awt.BorderLayout.CENTER);
 
     javax.swing.JPanel btnPanel = new javax.swing.JPanel();
     btnPanel.add(addBtn);
     btnPanel.add(removeBtn);
+    btnPanel.add(editBtn);
     panel.add(btnPanel, java.awt.BorderLayout.SOUTH);
 
     JOptionPane.showMessageDialog(this, panel, "Edit Inventory", JOptionPane.PLAIN_MESSAGE);

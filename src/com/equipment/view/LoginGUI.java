@@ -101,6 +101,19 @@ public class LoginGUI extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
+        
+        // === DEV OVERRIDE ===
+        if (username.equals("testemp") && password.equals("test123")) {
+        new MainGUI("testemp").setVisible(true);
+        this.dispose();
+        return;
+    }
+        if (username.equals("testadmin") && password.equals("admin123")) {
+        new AdminGUI("testadmin").setVisible(true);
+        this.dispose();
+        return;
+}
+        // === END DEV OVERRIDE ===
 
         //Use the EmployeeDAO to verify the login credentials
         EmployeeDAO employeeDAO = new EmployeeDAO();

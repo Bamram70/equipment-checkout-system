@@ -4,6 +4,8 @@
  */
 package com.equipment.model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Brendan McGalliard
@@ -12,15 +14,118 @@ package com.equipment.model;
  */
 public class Equipment
 {
-    protected int id;
-    protected String name;
-    protected String type; //tool or material
+    protected int equipID;
+    protected String equipName;
+    protected String equipType; //tool or material
+    protected int equipQuan;
+    protected String equipCond; //New, Worn, Damaged, Broken(not repairable)
+    protected boolean checkOutStatus;
+    protected int warehouseID;
+    protected LocalDate returnDate;
     
-    public Equipment(int id, String name, String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
+    public static final String TOOL_TYPE = "Tool";
+    public static final String MATERIAL_TYPE = "Material";
+    
+    //Default Constructor
+    public Equipment()
+    {
+        
+    }
+    
+    //Constructor for New Equipment
+    public Equipment(String equipName, String equipType, int equipQuan, 
+            String equipCond, boolean checkOutStatus, int warehouseID)
+    {
+        this.equipName = equipName;
+        this.equipType = equipType;
+        this.equipQuan = equipQuan;
+        this.equipCond = equipCond;
+        this.checkOutStatus = checkOutStatus;
+        this.warehouseID = warehouseID;
+    }
+    
+    //Parameterized Constructor
+    public Equipment(int equipID, String equipName, String equipType, 
+            int equipQuan, String equipCond, boolean checkOutStatus, int warehouseID) 
+    {
+        this.equipID = equipID;
+        this.equipName = equipName;
+        this.equipType = equipType;
+        this.equipQuan = equipQuan;
+        this.equipCond = equipCond;
+        this.checkOutStatus = checkOutStatus;
+        this.warehouseID = warehouseID;
     }
     
     //Getters and Setters
+    public int getEquipID()
+    {
+        return equipID;
+    }
+    public void setEquipID(int equipID)
+    {
+        this.equipID = equipID;
+    }
+    
+    public String getEquipName()
+    {
+        return equipName;
+    }
+    public void setEquipName(String equipName)
+    {
+        this.equipName = equipName;
+    }
+    
+    public String getEquipType()
+    {
+        return equipType;
+    }
+    public void setEquipType(String equipType)
+    {
+        this.equipType = equipType;
+    }
+    
+    public int getEquipQuan()
+    {
+        return equipQuan;
+    }
+    public void setEquipQuan(int equipQuan)
+    {
+        this.equipQuan = equipQuan;
+    }
+    
+    public String getEquipCond()
+    {
+        return equipCond;
+    }
+    public void setEquipCond(String equipCond)
+    {
+        this.equipCond = equipCond;
+    }
+    
+    public boolean getCheckOutStatus()
+    {
+        return checkOutStatus;
+    }
+    public void setCheckOutStatus(boolean checkOutStatus)
+    {
+        this.checkOutStatus = checkOutStatus;
+    }
+    
+    public int getWarehouseID()
+    {
+        return warehouseID;
+    }
+    public void setWarehouseID(int warehouseID)
+    {
+        this.warehouseID = warehouseID;
+    }
+    
+    @Override
+    public String toString() 
+    {
+        return equipName + " (" + equipType + ") - Qty: " + equipQuan;
+    }
+    
+        
 }

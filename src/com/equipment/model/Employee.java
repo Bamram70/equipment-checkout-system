@@ -33,7 +33,8 @@ public class Employee
     }
     
     //New employee Constructor (database adds employeeID)
-    public Employee(String username, String role, String password) {
+    public Employee(String username, String role, String password) 
+    {
         this.username = username;
         this.role = role;
         this.password = password;
