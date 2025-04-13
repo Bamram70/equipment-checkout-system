@@ -22,3 +22,5 @@ ALTER TABLE equipment
 ADD COLUMN `condition` VARCHAR(50),
 ADD COLUMN `is_checked_out` TINYINT(1) DEFAULT 0,
 ADD COLUMN `warehouse_id` INT;
+
+ALTER TABLE equipment ADD COLUMN return_date DATE DEFAULT NULL;
