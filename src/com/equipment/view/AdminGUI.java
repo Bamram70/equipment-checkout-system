@@ -48,7 +48,6 @@ public class AdminGUI extends javax.swing.JFrame {
         removeEmployee.addActionListener(e -> removeEmployee()); //listens for when "Remove employee" button is clicked
         employeeListModel = new DefaultListModel<>();
         lstEmployees.setModel(employeeListModel);  //Employee list
-        lstInventory.setModel(inventoryModel);
         editInventory.addActionListener(e -> openInventoryEditor());
         setLocationRelativeTo(null);
         lblWelcome.setText("Welcome " + username);
@@ -60,8 +59,7 @@ public class AdminGUI extends javax.swing.JFrame {
 
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         editInventory = new javax.swing.JButton();
         addEmployee = new javax.swing.JButton();
@@ -69,15 +67,12 @@ public class AdminGUI extends javax.swing.JFrame {
         lstOverdue = new javax.swing.JList<>();
         removeEmployee = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnReports = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         lblWelcome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEmployees = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstInventory = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,8 +80,7 @@ public class AdminGUI extends javax.swing.JFrame {
 
         addEmployee.setText("Add Employee");
 
-        lstOverdue.setModel(new javax.swing.AbstractListModel<String>()
-        {
+        lstOverdue.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Tool 1", "Tool 2", "Tool 3", "Tool 4", "Tool 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -97,22 +91,16 @@ public class AdminGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Overdue Tool reports");
 
-        jLabel2.setText("Tools/Materials");
-
         btnReports.setText("Generate Reports");
-        btnReports.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportsActionPerformed(evt);
             }
         });
 
         btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
             }
         });
@@ -121,85 +109,66 @@ public class AdminGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Employee List");
 
-        jScrollPane2.setViewportView(lstInventory);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(lblWelcome)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(124, 124, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnLogout)
-                                .addGap(36, 36, 36))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(editInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(addEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(removeEmployee))
-                                    .addComponent(btnReports))
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(33, 33, 33))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel2))
+                                .addComponent(lblWelcome)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(removeEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                    .addComponent(editInventory, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addEmployee, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnReports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(80, 80, 80)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(45, 45, 45))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblWelcome)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 30, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLogout)
-                        .addGap(29, 29, 29))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(editInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(addEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(removeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpn_rentedtools, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addGap(29, 29, 29))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(editInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 181, Short.MAX_VALUE))
         );
 
         pack();
@@ -377,19 +346,42 @@ private void openInventoryEditor() {
 });
 
     removeBtn.addActionListener(e -> {
-        String selected = popupList.getSelectedValue();
-        if (selected != null) {
-            inventoryModel.removeElement(selected);
-            JOptionPane.showMessageDialog(this, "Removed: " + selected);
+    // Get the selected item from the list
+    String selected = popupList.getSelectedValue();
+    //System.out.println("Selected equipment: " + selected);//debugger println
+    
+    if (selected != null) {
+        
+        int equipID = getEquipmentIDfromName(selected);
+        
+        if (equipID != -1){
+        // Call the method to remove the equipment from the database
+        boolean isRemoved = equipmentController.removeEquipment(equipID);
+        
+         if (isRemoved) {
+                inventoryModel.removeElement(selected);  // Remove from the list model
+                JOptionPane.showMessageDialog(this, "Removed: " + selected);
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to remove: " + selected);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Select an item to remove.");
+            JOptionPane.showMessageDialog(this, "Equipment not found.");
         }
-    });
+    } else {
+        JOptionPane.showMessageDialog(this, "Select an item to remove.");
+    }
+});
     
     editBtn.addActionListener(e -> {
     String selected = popupList.getSelectedValue();
     if (selected == null) {
         JOptionPane.showMessageDialog(this, "Select an item to edit.");
+        return;
+    }
+    
+    int equipID = getEquipmentIDfromName(selected);
+    if (equipID == -1){
+        JOptionPane.showMessageDialog(this, "Could not find equipment ID");
         return;
     }
 
@@ -431,25 +423,42 @@ private void openInventoryEditor() {
     }
 
     String newReturnDate = "";
+    LocalDate parsedReturnDate = null;
     if (newType.equalsIgnoreCase("Tool")) {
         newReturnDate = JOptionPane.showInputDialog(this, "Edit return date (yyyy-MM-dd):", oldReturnDate);
         if (newReturnDate != null && !newReturnDate.isEmpty()) {
             try {
-                java.time.LocalDate.parse(newReturnDate); // Validates format
+                parsedReturnDate = LocalDate.parse(newReturnDate); // Validates format
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd.");
                 return;
             }
         }
     }
+    
+    boolean success = equipmentController.updateEquipment(
+            equipID,
+            newName,
+            newType,
+            Integer.parseInt(newQuan),
+            newCond,
+            isCheckedOut,
+            Integer.parseInt(newWarehouseID),
+            parsedReturnDate
+    );
+    
+    if (success) {
+        String updated = newName + " (" + newType.toUpperCase() + ") x" + newQuan +
+            " | Cond: " + newCond +
+            " | Checked Out: " + isCheckedOut +
+            " | WH ID: " + newWarehouseID +
+            (parsedReturnDate != null ? " | Return: " + parsedReturnDate : "");
 
-    String updated = newName + " (" + newType.toUpperCase() + ") x" + newQuan +
-        " | Cond: " + newCond +
-        " | Checked Out: " + isCheckedOut +
-        " | WH ID: " + newWarehouseID +
-        (newReturnDate != null && !newReturnDate.isEmpty() ? " | Return: " + newReturnDate : "");
-
-    inventoryModel.setElementAt(updated, popupList.getSelectedIndex());
+        inventoryModel.setElementAt(updated, popupList.getSelectedIndex());
+        JOptionPane.showMessageDialog(this, "Item updated successfully.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Failed to update item in database.");
+    }
 });
     
     panel.setLayout(new java.awt.BorderLayout());
@@ -499,6 +508,29 @@ private void openInventoryEditor() {
             inventoryModel.addElement(display);
         }
     }
+    private int getEquipmentIDfromName(String selected) 
+    {
+        List<Equipment> equipList = equipmentController.getAllEquipment();
+       
+        
+        String equipName = selected.split("\\s*\\(")[0].trim();
+        
+        // Debug: Print the equipment names
+        //System.out.println("Equipment List:");
+        for (Equipment equipment : equipList) {
+        System.out.println(equipment.getEquipName());
+        }
+        
+        // Search for equipment with given name
+        for (Equipment equipment : equipList) {
+            if (equipment.getEquipName().equals(equipName)) {
+                //System.out.println("Found Equipment: " + equipment.getEquipName() + " ID: " + equipment.getEquipID()); // Debugging line
+                return equipment.getEquipID(); //returns the equipment ID if found
+            }
+        }
+        //System.out.println("Equipment not found: " + equipName); // Debugging line
+        return -1; // Return -1 if not found
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -507,14 +539,11 @@ private void openInventoryEditor() {
     private javax.swing.JButton btnReports;
     private javax.swing.JButton editInventory;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jpn_rentedtools;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<String> lstEmployees;
-    private javax.swing.JList<String> lstInventory;
     private javax.swing.JList<String> lstOverdue;
     private javax.swing.JButton removeEmployee;
     // End of variables declaration//GEN-END:variables
