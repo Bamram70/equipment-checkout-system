@@ -62,5 +62,6 @@ CREATE TABLE Checkouts (
     emp_ID INT AUTO_INCREMENT PRIMARY KEY,
     equip_ID INT NOT NULL,
     checkout_date VARCHAR(255),
+    FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE
 );
     
