@@ -158,6 +158,5 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<String> lstRented;
->>>>>>> databaseConnectivity2
     // End of variables declaration//GEN-END:variables
 }
