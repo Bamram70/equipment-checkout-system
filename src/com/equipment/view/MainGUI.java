@@ -53,19 +53,11 @@ public class MainGUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstRented);
 
         jLabel1.setText("Rental List");
-
->>>>>>> databaseConnectivity2
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-            .addGap(0, 856, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
-=======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(btnLogout)
@@ -107,7 +99,6 @@ public class MainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addGap(41, 41, 41))
->>>>>>> databaseConnectivity2
         );
 
         pack();
@@ -158,6 +149,5 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<String> lstRented;
->>>>>>> databaseConnectivity2
     // End of variables declaration//GEN-END:variables
 }
