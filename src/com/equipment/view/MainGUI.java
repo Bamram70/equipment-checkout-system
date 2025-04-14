@@ -126,7 +126,13 @@ public class MainGUI extends javax.swing.JFrame {
     private void requestTool() {
     new ToolRequestGUI(username).setVisible(true);
 }
-    
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
 
 // logic to request materials
 //private void requestMaterial() {
