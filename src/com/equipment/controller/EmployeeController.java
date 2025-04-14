@@ -15,9 +15,36 @@ import java.util.List;
  */
 public class EmployeeController
 {
-    private EmployeeDAO employeeDAO = new EmployeeDAO();
+
+    private EmployeeDAO employeeDAO;
     
-    public boolean isAdmin(int employeeID)
+    public EmployeeController()
+    {
+        employeeDAO = new EmployeeDAO();
+    }
+    
+    public boolean addEmployee(Employee employee) 
+    {
+        return employeeDAO.addEmployee(employee);
+    }
+    
+    public boolean login(String username, String password)
+    {
+        return employeeDAO.login(username, password);
+    }
+    
+    public List<Employee> listAllEmployees()
+    {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        return employeeDAO.getAllEmployees();
+    }
+    public boolean removeEmployee(String empUsername)
+    {
+        return employeeDAO.removeEmployee(empUsername);
+    }
+    
+    /*public boolean isAdmin(int employeeID)
+
     {
         Employee employee = employeeDAO.getEmployeeByID(employeeID);
         return employee != null && employee.isAdmin();
@@ -34,4 +61,7 @@ public class EmployeeController
         if (!currentUser.isAdmin()) return false;
         return employeeDAO.removeEmployee(employeeID);
     }
+
+    */
+
 }

@@ -12,21 +12,74 @@ package com.equipment.model;
  */
 public class Employee
 {
-    private int id;
-    private String name;
+    private int empID;
+    private String username;
     private String role; //"admin" or "employee"
+    private String password;
     
-    public Employee(int id, String name, String role)
+    public Employee()
     {
-        this.id = id;
-        this.name = name;
+        //no argument constructor
+    }
+        
+    
+    //Existing employee Constructor
+    public Employee(int empID, String username, String role, String password)
+    {
+        this.empID = empID;
+        this.username = username;
         this.role = role;
+        this.password = password;
     }
     
-    public boolean isAdmin() 
+    //New employee Constructor (database adds employeeID)
+    public Employee(String username, String role, String password) 
+    {
+        this.username = username;
+        this.role = role;
+        this.password = password;
+    }
+    
+    /*public boolean isAdmin() 
     {
         return "admin".equalsIgnoreCase(role);
     }
-    
+    */
+
     //Getters and Setters
+    public int getEmpID() 
+    {
+        return empID;
+    }
+    public void setEmpID(int empID)
+    {
+        this.empID = empID;
+    }
+    
+    public String getUsername() 
+    {
+        return username;
+    }
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+    
+    public String getRole() 
+    {
+        return role;
+    }
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
+    
+    public String getPassword() 
+    {
+        return password;
+    }
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
 }

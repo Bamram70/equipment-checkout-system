@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/controller/CheckoutController.java</file>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/model/CheckoutRecord.java</file>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/dao/CheckoutDAO.java</file>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/controller/EmployeeController.java</file>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/controller/EquipmentController.java</file>
-            <file>file:/C:/Users/taint/Documents/School%20Documents/CEIS%20Modules/CEIS355A/EquipmentCheckoutSystem/src/com/equipment/view/MainGUI.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/model/Equipment.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/dao/EquipmentDAO.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/model/Material.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/model/Tool.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/controller/EquipmentController.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/controller/CheckoutController.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/controller/EmployeeController.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/dao/CheckoutDAO.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/dao/DatabaseConnection.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/dao/EmployeeDAO.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/model/CheckoutRecord.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/model/Employee.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/view/AdminGUI.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/view/LoginGUI.java</file>
+            <file>file:/P:/School%20Documents/CEIS400/equipment-checkout-system-databaseConnection/src/com/equipment/view/MainGUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -4,6 +4,9 @@
  */
 package com.equipment.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 /**
  *
  * @author Brendan McGalliard
@@ -12,5 +15,21 @@ package com.equipment.dao;
  */
 public class DatabaseConnection
 {
+    private static final String url = "jdbc:mysql://127.0.0.1:3306/ECS";
+    private static final String user = "root";
+    private static final String password = "563Zd568";
     
+    public static Connection getConnection() throws SQLException
+    {
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        catch(ClassNotFoundException e)
+        {
+            throw new SQLException("MySQL JBDC Driver not found!", e);
+        }
+        
+        return DriverManager.getConnection(url, user, password);
+    }
 }

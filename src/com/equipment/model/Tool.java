@@ -4,20 +4,42 @@
  */
 package com.equipment.model;
 
+import java.time.LocalDate;
+
 /**
  *
-  * @author Brendan McGalliard
+ * @author Brendan McGalliard
  *         b.mcgalliard.dev@outlook.com
  *         +1(517)575-5880
  */
 public class Tool extends Equipment
 {
-    private String condition;
+    public Tool(String equipName, int equipQuan, String equipCond, LocalDate returnDate)
+    {
+        super(equipName, Equipment.TOOL_TYPE, equipQuan, 
+                equipCond, false, 0, returnDate); //Default checkout and warehouseID
+        this.returnDate = returnDate;
+    }
     
-    public Tool(int id, String name, String condition){
-        super(id, name, "Tool");
-        this.condition = condition;
+    public Tool(int equipID, String equipName, String equipType, int equipQuan, 
+            String equipCond, boolean checkOutStatus, int warehouseID, LocalDate returnDate)
+    {
+        super(equipID, equipName, Equipment.TOOL_TYPE, equipQuan, equipCond, checkOutStatus, warehouseID, returnDate);
     }
     
     //Getters and Setters
+    public LocalDate getReturnDate()
+    {
+        return returnDate;
+    }
+    public void setReturnDate(LocalDate returnDate)
+    {
+        this.returnDate = returnDate;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return super.toString() + " | Return Date:" + returnDate;
+    }
 }
