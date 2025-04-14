@@ -57,3 +57,10 @@ CREATE TABLE Reports (
     generated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     content VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE Checkouts (
+    emp_ID INT AUTO_INCREMENT PRIMARY KEY,
+    equip_ID INT NOT NULL,
+    checkout_date VARCHAR(255),
+);
+    
