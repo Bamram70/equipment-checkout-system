@@ -1,0 +1,54 @@
+
+SELECT TABLE_NAME, CONSTRAINT_NAME 
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE 
+WHERE REFERENCED_TABLE_NAME = 'Equipment';
+ALTER TABLE tools
+DROP FOREIGN KEY tools_ibfk_1;
+ALTER TABLE toolconditionreport
+DROP FOREIGN KEY toolconditionreport_ibfk_1;
+ALTER TABLE inventorydatabase
+DROP FOREIGN KEY inventorydatabase_ibfk_1;
+ALTER TABLE materials
+DROP FOREIGN KEY materials_ibfk_1;
+ALTER TABLE equipment
+DROP FOREIGN KEY equipment_ibfk_1;
+
+DROP TABLE equipment ;
+
+CREATE TABLE Equipment (
+    equip_ID INT AUTO_INCREMENT PRIMARY KEY,
+    equip_name VARCHAR(45) NOT NULL,
+    type VARCHAR(45) NOT NULL,
+    quantity INT NOT NULL,
+    equip_condition VARCHAR(45) NOT NULL,
+    is_checked_out BOOLEAN NOT NULL,
+    warehouse_ID INT NOT NULL,
+    return_date DATE NOT NULL
+);
+-- Add warehouse_id to InventoryDatabase
+ALTER TABLE InventoryDatabase
+ADD COLUMN warehouse_ID INT NOT NULL;
+
+-- Create the foreign key constraint linking InventoryDatabase to Warehouse
+ALTER TABLE InventoryDatabase
+ADD CONSTRAINT inventorydatabase_fk
+FOREIGN KEY (warehouse_ID) REFERENCES Warehouse(warehouse_ID);
+
+-- Add warehouse_id foreign key to Equipment
+ALTER TABLE Equipment
+ADD CONSTRAINT equipment_warehouse_fk
+FOREIGN KEY (warehouse_ID) REFERENCES Warehouse(warehouse_ID);
+
+-- Add equip_ID foreign key Materials
+ALTER TABLE Materials
+ADD CONSTRAINT materials_fk
+FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE;
+
+-- Add equip_ID to ToolConditionReport
+ALTER TABLE ToolConditionReport
+ADD CONSTRAINT toolconditionreport_fk
+FOREIGN KEY (equip_ID) REFERENCES Equipment(equip_ID) ON DELETE CASCADE;
+
+-- Alter condition column to align with project
+ALTER TABLE Equipment
+MODIFY COLUMN `is_checked_out` TINYINT DEFAULT 0;
